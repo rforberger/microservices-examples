@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: microservice-pipeline
+spec:
+  params:
+    - name: repo-url
+    - name: image
+  workspaces:
+    - name: shared-data
+  tasks:
+    - name: clone
+      taskRef:
+        name: git-clone
+      params:
+        - name: url
+          value: $(params.repo-url)
+      workspaces:
+        - name: output
+          workspace: shared-data
+
+    - name: build
+      runAfter: ["clone"]
+      taskRef:
+        name: kaniko
+      params:
+        - name: IMAGE
+          value: $(params.image)
+      workspaces:
+        - name: source
+          workspace: shared-data
