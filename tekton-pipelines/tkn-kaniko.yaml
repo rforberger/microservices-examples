@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tkn-kaniko
+  namespace: argocd
+spec:
+  destination:
+    namespace: microservices
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: task/kaniko/0.7
+    repoURL: https://github.com/tektoncd/catalog.git
+    targetRevision: HEAD
