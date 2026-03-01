@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: microservice-run-
+spec:
+  pipelineRef:
+    name: microservice-pipeline
+  params:
+    - name: repo-url
+      value: https://github.com/rforberger/microservices-examples.git
+    - name: image
+      value: docker.io/rforberger/microservices
+  workspaces:
+    - name: shared-data
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi
