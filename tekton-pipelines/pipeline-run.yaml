@@ -4,7 +4,7 @@ metadata:
   generateName: microservice-run-
 spec:
   pipelineRef:
-    name: microservice-pipeline
+    name: microservices
   params:
     - name: repo-url
       value: https://github.com/rforberger/microservices-examples.git
