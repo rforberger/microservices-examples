@@ -6,6 +6,11 @@ spec:
   params:
     - name: repo-url
     - name: image
+    - name: pathToContext
+      description: The path to the build context, used by Kaniko - within the workspace
+      default: src
+    - name: imageTag
+      description: The image tag
   workspaces:
     - name: shared-data
   tasks:
@@ -19,13 +24,16 @@ spec:
         - name: output
           workspace: shared-data
 
-    - name: build
-      runAfter: ["clone"]
+  - name: source-to-image
       taskRef:
         name: kaniko
-      params:
-        - name: IMAGE
-          value: $(params.image)
+      runAfter:
+        - clone
       workspaces:
         - name: source
           workspace: shared-data
+      params:
+        - name: CONTEXT
+          value: $(params.pathToContext)
+        - name: IMAGE
+          value: $(params.image):$(params.imageTag)

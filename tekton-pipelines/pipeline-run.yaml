@@ -10,6 +10,8 @@ spec:
       value: https://github.com/rforberger/microservices-examples.git
     - name: image
       value: docker.io/rforberger/microservices
+    - name: imageTag
+      value: latest
   workspaces:
     - name: shared-data
       volumeClaimTemplate:
