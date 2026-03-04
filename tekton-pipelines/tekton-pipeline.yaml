@@ -23,7 +23,6 @@ spec:
       workspaces:
         - name: output
           workspace: shared-data
-
     - name: source-to-image
       taskRef:
         name: kaniko
