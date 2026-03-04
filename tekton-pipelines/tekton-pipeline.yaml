@@ -24,7 +24,7 @@ spec:
         - name: output
           workspace: shared-data
 
-  - name: source-to-image
+    - name: source-to-image
       taskRef:
         name: kaniko
       runAfter:
