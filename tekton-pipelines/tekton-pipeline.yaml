@@ -3,6 +3,7 @@ kind: Pipeline
 metadata:
   name: microservice-pipeline
 spec:
+  serviceAccountName: build-bot
   params:
     - name: repo-url
     - name: image
