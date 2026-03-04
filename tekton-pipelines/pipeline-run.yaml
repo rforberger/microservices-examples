@@ -1,7 +1,5 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
-metadata:
-  generateName: microservice-run-
 spec:
   pipelineRef:
     name: microservice-pipeline
