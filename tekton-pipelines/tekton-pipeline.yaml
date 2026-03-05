@@ -24,16 +24,14 @@ spec:
       workspaces:
         - name: output
           workspace: shared-data
-    - name: source-to-image
-      taskRef:
-        name: kaniko
+    - name: build
       runAfter:
         - clone
+      taskRef:
+        name: buildah-build
       workspaces:
         - name: source
           workspace: shared-data
       params:
-        - name: CONTEXT
-          value: $(params.pathToContext)
         - name: IMAGE
-          value: $(params.image):$(params.imageTag)
+          value: $(params.image)
