@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: debug-workspace
+spec:
+  workspaces:
+    - name: $(workspace)
+  steps:
+    - name: list-files
+      image: alpine
+      script: |
+        #!/bin/sh
+        echo "Workspace path:"
+        echo $(workspaces.source.path)
+
+        echo "ls:"
+        ls -la $(workspaces.source.path)
+
+        echo "find:"
+        find $(workspaces.source.path)

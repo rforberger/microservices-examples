@@ -24,6 +24,11 @@ spec:
       workspaces:
         - name: output
           workspace: shared-data
+    - name: debug-workspace
+      runAfter:
+        - clone
+      taskRef:
+        name: debug-workspace
     - name: build
       runAfter:
         - clone
