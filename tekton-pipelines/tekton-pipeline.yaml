@@ -32,6 +32,9 @@ spec:
       params:
         - name: workspace
           value: shared-data
+      workspaces:
+        - name: shared-data
+          workspace: shared-data
     - name: build
       runAfter:
         - clone
