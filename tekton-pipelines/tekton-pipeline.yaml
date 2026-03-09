@@ -43,3 +43,5 @@ spec:
       params:
         - name: IMAGE
           value: $(params.image)
+        - name: BUILDDIR
+          value: workspace/source

@@ -8,11 +8,14 @@ spec:
   params:
     - name: IMAGE
       type: string
+    - name: BUILDDIR
+      type: string
   steps:
     - name: build-and-push
       image: quay.io/buildah/stable
       securityContext:
         privileged: true   # simplify for now
       script: |
+        cd $(params.BUILDDIR)
         buildah bud -t $(params.IMAGE) .
         buildah push $(params.IMAGE)
