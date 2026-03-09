@@ -29,6 +29,9 @@ spec:
         - clone
       taskRef:
         name: debug-workspace
+      params:
+        - name: workspace
+          value: shared-data
     - name: build
       runAfter:
         - clone
