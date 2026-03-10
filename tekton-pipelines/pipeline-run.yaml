@@ -3,7 +3,7 @@ kind: PipelineRun
 metadata:
   generateName: microservice-pipeline-run-
 spec:
-  serviceAccountName: build-bot
+  serviceAccountName: buildah-sa
   pipelineRef:
     name: microservice-pipeline
   params:
